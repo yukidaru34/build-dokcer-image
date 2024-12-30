@@ -13,7 +13,6 @@ on:
 env:
   BUILD_DIR: ./containers/${{ inputs.builds-dir }}
 
-permissions:
 
 jobs:
   build-docker-image:
