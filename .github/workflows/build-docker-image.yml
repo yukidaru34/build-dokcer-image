@@ -3,13 +3,12 @@ name: Build Docker Image
 on:
   workflow_dispatch:
     inputs:
-      buils-dir:
+      builds-dir:
         description: ビルドするファイルを選択
         required: true
         type: choice
         options:
           - terraform-kubectl
-
 
 env:
   BUILD_DIR:
@@ -17,19 +16,18 @@ env:
 permissions:
 
 jobs:
-    
-  build-dokcer-image:
+  build-docker-image:
     runs-on: ubuntu-latest
     steps:
       - name: Set Build Dir
         run: |
-          ${{env.BUILD_DIR}} =  ./containers/${{inputs.buils-dir}}
+          BUILD_DIR="./containers/${{ inputs.builds-dir }}"
+          echo "Build directory: ${BUILD_DIR}"
 
       - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@master
+        uses: docker/setup-buildx-action@v1
 
-      - name: Print a greeting
+      - name: Build Docker Image
         working-directory: ${{env.BUILD_DIR}}
         run: |
           docker build -t container .
