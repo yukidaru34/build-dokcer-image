@@ -13,8 +13,6 @@ on:
 env:
   BUILD_DIR:
 
-permissions:
-
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
