@@ -11,7 +11,7 @@ on:
           - terraform-kubectl
 
 env:
-  BUILD_DIR: ./containers/${{ inputs.builds-dir }}
+  BUILD_DIR: containers/${{ inputs.builds-dir }}
 
 jobs:
   build-docker-image:
