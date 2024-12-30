@@ -1,4 +1,4 @@
-FROM debian:buster-slim AS builder
+FROM ubuntu:latest
 
 # パッケージのインストール
 RUN apt-get update && apt-get install -y wget curl unzip && \
