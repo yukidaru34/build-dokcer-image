@@ -17,10 +17,9 @@ RUN curl -LO https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubect
   && mv kubectl /usr/local/bin/
 
 # AWS CLIのインストール
-ENV AWS_CLI_VERSION 2
-RUN curl "https://awscli.amazonaws.com/awscliv2.zip" -o "awscliv2.zip" \
-  && unzip awscliv2.zip \
-  && ./aws/install
+RUN wget -qO- https://releases.hashicorp.com/terraform/1.3.7/terraform_1.3.7_linux_amd64.zip \
+  && unzip -q terraform_1.3.7_linux_amd64.zip 2>/dev/null \
+  && mv terraform /usr/local/bin/
 
 FROM builder AS final
 
