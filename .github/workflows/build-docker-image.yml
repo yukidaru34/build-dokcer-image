@@ -11,17 +11,12 @@ on:
           - terraform-kubectl
 
 env:
-  BUILD_DIR:
+  BUILD_DIR: ./containers/${{ inputs.builds-dir }}
 
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Build Dir
-        run: |
-          BUILD_DIR="./containers/${{ inputs.builds-dir }}"
-          echo "Build directory: ${BUILD_DIR}"
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
