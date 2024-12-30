@@ -2,7 +2,7 @@
 FROM debian:buster-slim
 
 # パッケージの更新
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get install -y wget
 
 # Terraformのインストール
 RUN wget -qO- https://releases.hashicorp.com/terraform/1.3.7/terraform_1.3.7_linux_amd64.zip \
